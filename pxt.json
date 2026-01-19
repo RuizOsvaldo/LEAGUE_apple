@@ -11,7 +11,7 @@
         "assets.json",
         "images.g.jres",
         "images.g.ts",
-        "apple-collector.md"
+        "solution.md"
     ],
     "testFiles": [
         "test.ts"
