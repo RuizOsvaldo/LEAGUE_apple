@@ -28,7 +28,8 @@ let player = sprites.create(assets.image`collector`, SpriteKind.Player)
 
 Let's make the player move with the controller buttons!
 
-From ``||controller:Controller||``, use ``||controller:move sprite with buttons||`` and set the speed to **100** for both horizontal (vx) and vertical (vy) movement.
+From ``||controller:Controller||``, use ``||controller:move sprite with buttons||``.
+Both values for **VX** and **VY**, should be 100.
 
 ```blocks
 scene.setBackgroundColor(7)
@@ -67,7 +68,7 @@ info.setScore(0)
 
 Now let's make apples appear automatically throughout the game!
 
-From ``||game:Game||``, drag out ``||game:on game update every||`` and set it to **1500** ms (which means every 1.5 seconds, a new apple will appear).
+From ``||game:Game||``, drag out ``||game:on game update every||`` and set it to **2000** ms (which means every 2 seconds, a new apple will appear).
 
 ```blocks
 game.onUpdateInterval(1500, function () {
