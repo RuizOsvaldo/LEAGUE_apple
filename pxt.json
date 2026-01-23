@@ -1,5 +1,5 @@
 {
-    "name": "LEAGUE_apple",
+    "name": "LEAGUE_apple_game",
     "description": "",
     "dependencies": {
         "device": "*"
@@ -23,5 +23,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocksprj"
 }

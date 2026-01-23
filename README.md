@@ -17,11 +17,11 @@ scene.setBackgroundColor(7)
 
 Now create your player character who will collect the apples.
 
-From ``||sprites:Sprites||``, ``||sprites:create a sprite||`` and name it **player**. Set the kind to **Player** and choose the `collector` image from your assets.
+From ``||sprites:Sprites||``, select ``||sprites:set mySprite to sprite to kind player||`` and move it into on start block. Select on 'mySprite' and 'rename' it to **myPlayer**. Set the kind to **Player** and choose an image from the `collector` image from gallery.
 
 ```blocks
 scene.setBackgroundColor(7)
-let player = sprites.create(assets.image`collector`, SpriteKind.Player)
+let myPlayer = sprites.create(assets.image`collector`, SpriteKind.Player)
 ```
 
 ## Step 3
@@ -29,7 +29,7 @@ let player = sprites.create(assets.image`collector`, SpriteKind.Player)
 Let's make the player move with the controller buttons!
 
 From ``||controller:Controller||``, use ``||controller:move sprite with buttons||``.
-Both values for **VX** and **VY**, should be 100.
+Click the + sign to see **VX** and **VY** values, both should be 100.
 
 ```blocks
 scene.setBackgroundColor(7)
@@ -54,7 +54,7 @@ player.setStayInScreen(true)
 
 Initialize the score to keep track of how many apples you collect.
 
-From ``||info:Info||``, use ``||info:set score to 0||`` to start the game with zero points.
+From ``||info:Info||``, use ``||info:set score to 0||`` to start your game with zero points.
 
 ```blocks
 scene.setBackgroundColor(7)
@@ -80,11 +80,11 @@ game.onUpdateInterval(1500, function () {
 
 Inside the game update interval, create an apple sprite.
 
-``||sprites:Create a sprite||`` called **apple** with kind **Food** and use the `apple` image from your assets.
+Select ``||sprites:set mySprite to sprite kind Player||`` and rename mySprite to **apple** and change sprite kind to **Food**. Use the `apple` image from your assets.
 
 ```blocks
 let apple: Sprite = null
-game.onUpdateInterval(1500, function () {
+game.onUpdateInterval(2000, function () {
     apple = sprites.create(assets.image`apple`, SpriteKind.Food)
 })
 ```
@@ -93,7 +93,7 @@ game.onUpdateInterval(1500, function () {
 
 Make each apple appear at a random position on the screen.
 
-From ``||sprites:Sprites||``, use ``||sprites:set position||`` for the apple. For the coordinates, use ``||math:pick random||`` from the ``||math:Math||`` category:
+From ``||sprites:Sprites||``, use ``||sprites:set position to x=0 y=0||`` for the apple. For the coordinates, use ``||math:pick random||`` from the ``||math:Math||`` category:
 - x: random from **10** to **150**
 - y: random from **10** to **110**
 
@@ -111,9 +111,13 @@ game.onUpdateInterval(1500, function () {
 
 Finally, let's make it so collecting apples increases your score!
 
-From ``||sprites:Sprites||``, use ``||sprites:on sprite overlaps||`` with **Player** and **Food**. When they overlap:
-- ``||info:change score by 1||`` to add a point
-- ``||sprites:destroy||`` the food sprite with the **disintegrate** effect for **200** ms
+From ``||sprites:Sprites||``, use ``||sprites:on sprite kind Player overlaps with otherSprite kind Player||`` and change one **Player** to **Food**. 
+
+## Step 10
+
+Inside of the overlaps group block, add the following:
+- ``||info:change score by 1||`` to increase a point when you touch an apple
+- ``||sprites:destroy||`` to remove the apple. Replace mySprite with 'otherSprite'. Click the plus sign to change the effects to **disintegrate** effect for **200** ms
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
