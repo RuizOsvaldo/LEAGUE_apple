@@ -10,8 +10,7 @@
         "README.md",
         "assets.json",
         "images.g.jres",
-        "images.g.ts",
-        "solution.md"
+        "images.g.ts"
     ],
     "testFiles": [
         "test.ts"
@@ -23,5 +22,5 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "tsprj"
 }
