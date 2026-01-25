@@ -1,7 +1,10 @@
+
+
 # Apple Collector
 
 ## Introduction @unplugged
-Welcome to The LEAGUE's Apple Collector game! In this beginner-friendly game, you'll learn the basics of game development by creating a simple collection game. Move your character around the screen to collect apples and increase your score. Let's start coding!
+Welcome to **The LEAGUE's Apple Collector game**! 
+In this beginner-friendly game, you'll learn the basics of game development by creating a simple collection game. Move your character around the screen to collect apples and increase your score. Let's start coding!
 
 ## Step 1
 
@@ -17,11 +20,11 @@ scene.setBackgroundColor(7)
 
 Now create your player character who will collect the apples.
 
-From ``||sprites:Sprites||``, ``||sprites:create a sprite||`` and name it **player**. Set the kind to **Player** and choose the `collector` image from your assets.
+From ``||sprites:Sprites||``, click and drag ``||sprites:set mySprite to sprite kind player||`` and rename it **myPlayer**. Set the kind to **Player** and choose the an image from the **Gallery** image section.
 
 ```blocks
 scene.setBackgroundColor(7)
-let player = sprites.create(assets.image`collector`, SpriteKind.Player)
+let myPlayer = sprites.create(assets.image`collector`, SpriteKind.Player)
 ```
 
 ## Step 3
@@ -29,12 +32,12 @@ let player = sprites.create(assets.image`collector`, SpriteKind.Player)
 Let's make the player move with the controller buttons!
 
 From ``||controller:Controller||``, use ``||controller:move sprite with buttons||``.
-Both values for **VX** and **VY**, should be 100.
+Press the **+** sign to see both values for **VX** and **VY**, as 100.
 
 ```blocks
 scene.setBackgroundColor(7)
-let player = sprites.create(assets.image`collector`, SpriteKind.Player)
-controller.moveSprite(player, 100, 100)
+let myPlayer = sprites.create(assets.image`collector`, SpriteKind.Player)
+controller.moveSprite(myPlayer, 100, 100)
 ```
 
 ## Step 4
@@ -45,9 +48,9 @@ From ``||sprites:Sprites||``, use ``||sprites:set stay in screen||`` to **ON** f
 
 ```blocks
 scene.setBackgroundColor(7)
-let player = sprites.create(assets.image`collector`, SpriteKind.Player)
-controller.moveSprite(player, 100, 100)
-player.setStayInScreen(true)
+let myPlayer = sprites.create(assets.image`collector`, SpriteKind.Player)
+controller.moveSprite(myPlayer, 100, 100)
+myPlayer.setStayInScreen(true)
 ```
 
 ## Step 5
@@ -58,9 +61,9 @@ From ``||info:Info||``, use ``||info:set score to 0||`` to start the game with z
 
 ```blocks
 scene.setBackgroundColor(7)
-let player = sprites.create(assets.image`collector`, SpriteKind.Player)
-controller.moveSprite(player, 100, 100)
-player.setStayInScreen(true)
+let myPlayer = sprites.create(assets.image`collector`, SpriteKind.Player)
+controller.moveSprite(myPlayer, 100, 100)
+myPlayer.setStayInScreen(true)
 info.setScore(0)
 ```
 
@@ -71,7 +74,7 @@ Now let's make apples appear automatically throughout the game!
 From ``||game:Game||``, drag out ``||game:on game update every||`` and set it to **2000** ms (which means every 2 seconds, a new apple will appear).
 
 ```blocks
-game.onUpdateInterval(1500, function () {
+game.onUpdateInterval(2000, function () {
 	
 })
 ```
@@ -80,7 +83,7 @@ game.onUpdateInterval(1500, function () {
 
 Inside the game update interval, create an apple sprite.
 
-``||sprites:Create a sprite||`` called **apple** with kind **Food** and use the `apple` image from your assets.
+Choose ``||sprites:set mySprite to sprite of kind player||`` rename it to **apple** with kind **Food** and use the "apple" image from your assets.
 
 ```blocks
 let apple: Sprite = null
@@ -93,7 +96,8 @@ game.onUpdateInterval(1500, function () {
 
 Make each apple appear at a random position on the screen.
 
-From ``||sprites:Sprites||``, use ``||sprites:set position||`` for the apple. For the coordinates, use ``||math:pick random||`` from the ``||math:Math||`` category:
+From ``||sprites:Sprites||``, use ``||sprites:set mySprite position to x and y||`` for the apple. 
+For the x and y, use ``||math:pick random||`` from the ``||math:Math||`` category:
 - x: random from **10** to **150**
 - y: random from **10** to **110**
 
@@ -101,7 +105,7 @@ This makes the game more fun because apples appear in different places each time
 
 ```blocks
 let apple: Sprite = null
-game.onUpdateInterval(1500, function () {
+game.onUpdateInterval(2000, function () {
     apple = sprites.create(assets.image`apple`, SpriteKind.Food)
     apple.setPosition(randint(10, 150), randint(10, 110))
 })
@@ -111,9 +115,10 @@ game.onUpdateInterval(1500, function () {
 
 Finally, let's make it so collecting apples increases your score!
 
-From ``||sprites:Sprites||``, use ``||sprites:on sprite overlaps||`` with **Player** and **Food**. When they overlap:
+From ``||sprites:Sprites||``, use ``||sprites:on sprite of kind player overlaps with otherSprite of kind player||``
+Change the last **Player** to **Food** and use **otherSprite** as the variable, not **apple** when they overlap:
 - ``||info:change score by 1||`` to add a point
-- ``||sprites:destroy||`` the food sprite with the **disintegrate** effect for **200** ms
+- ``||sprites:destroy||`` click the **+** sign to add an effect. Use the **disintegrate** effect for **200** ms
 
 ```blocks
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
